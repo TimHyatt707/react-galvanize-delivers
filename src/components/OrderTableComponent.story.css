@@ -1,0 +1,10 @@
+/*.OrderTableComponent {
+}
+section {
+  display: flex;
+  justify-content: flex-end;
+}
+.tableRows {
+  display: flex;
+  justify-content: space-between;
+}*/
