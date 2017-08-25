@@ -21,38 +21,7 @@ export default function OrderTableComponent({ items }) {
           <th>Price</th>
         </thead>
         <tbody>
-          <tr class="tableRows">
-            <td>
-              {items[0].name || 'Undefined'}
-            </td>
-            <td class="right-align">
-              {items[0].price ? '$' + items[0].price.toFixed(2) : 'Undefined'}
-            </td>
-          </tr>
-          <tr class="tableRows">
-            <td>
-              {items[1].name || 'Undefined'}
-            </td>
-            <td class="right-align">
-              {items[1].price ? '$' + items[1].price.toFixed(2) : 'Undefined'}
-            </td>
-          </tr>
-          <tr class="tableRows">
-            <td>
-              {items[2].name || 'Undefined'}
-            </td>
-            <td class="right-align">
-              {items[2].price ? '$' + items[2].price.toFixed(2) : 'Undefined'}
-            </td>
-          </tr>
-          <tr class="tableRows">
-            <td>
-              {items[3].name || 'Undefined'}
-            </td>
-            <td class="right-align">
-              {items[3].price ? '$' + items[3].price.toFixed(2) : 'Undefined'}
-            </td>
-          </tr>
+          <tr className="tableRows" />
         </tbody>
       </table>
       <section>
@@ -66,4 +35,37 @@ export default function OrderTableComponent({ items }) {
       </section>
     </div>
   );
+}
+
+{
+  /* <td>
+  {items[0].name || 'Undefined'}
+</td>
+<td className="right-align">
+  {items[0].price ? '$' + items[0].price.toFixed(2) : 'Undefined'}
+</td>
+</tr>
+<tr className="tableRows">
+<td>
+  {items[1].name || 'Undefined'}
+</td>
+<td className="right-align">
+  {items[1].price ? '$' + items[1].price.toFixed(2) : 'Undefined'}
+</td>
+</tr>
+<tr className="tableRows">
+<td>
+  {items[2].name || 'Undefined'}
+</td>
+<td className="right-align">
+  {items[2].price ? '$' + items[2].price.toFixed(2) : 'Undefined'}
+</td>
+</tr>
+<tr className="tableRows">
+<td>
+  {items[3].name || 'Undefined'}
+</td>
+<td className="right-align">
+  {items[3].price ? '$' + items[3].price.toFixed(2) : 'Undefined'}
+</td> */
 }

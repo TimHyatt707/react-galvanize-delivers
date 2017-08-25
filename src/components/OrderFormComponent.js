@@ -40,10 +40,7 @@ export default function OrderFormComponent({ defaultCustomerInfo }) {
         </div>
       </form>
       <div className="row center-align">
-        <a
-          href="#"
-          className="btn-large pink white-text"
-          onclick="testFields()">
+        <a href="#" className="btn-large pink white-text">
           PLACE ORDER
         </a>
       </div>
