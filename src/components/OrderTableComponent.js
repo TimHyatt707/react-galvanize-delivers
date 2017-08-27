@@ -7,21 +7,32 @@ export default function OrderTableComponent({ items }) {
   let tax = 0;
   let total = 0;
   for (let i = 0; i < items.length; i++) {
-    subtotal += items[i].price;
+    subtotal += items[items.length - 1].price;
     tax += 0.1;
-    total += items[i].price + 0.1;
+    total += items[items.length - 1].price + tax;
   }
-
   return (
     <div className="OrderTableComponent">
       <h5>Order</h5>
       <table className="striped">
         <thead>
-          <th>Item</th>
-          <th>Price</th>
+          <tr>
+            <td>Item</td>
+            <td>Price</td>
+          </tr>
         </thead>
         <tbody>
           <tr className="tableRows" />
+          {items.map(item =>
+            <tr>
+              <td className="striped">
+                {item.name}
+              </td>
+              <td className="striped">
+                {item.price}
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
       <section>
@@ -35,37 +46,4 @@ export default function OrderTableComponent({ items }) {
       </section>
     </div>
   );
-}
-
-{
-  /* <td>
-  {items[0].name || 'Undefined'}
-</td>
-<td className="right-align">
-  {items[0].price ? '$' + items[0].price.toFixed(2) : 'Undefined'}
-</td>
-</tr>
-<tr className="tableRows">
-<td>
-  {items[1].name || 'Undefined'}
-</td>
-<td className="right-align">
-  {items[1].price ? '$' + items[1].price.toFixed(2) : 'Undefined'}
-</td>
-</tr>
-<tr className="tableRows">
-<td>
-  {items[2].name || 'Undefined'}
-</td>
-<td className="right-align">
-  {items[2].price ? '$' + items[2].price.toFixed(2) : 'Undefined'}
-</td>
-</tr>
-<tr className="tableRows">
-<td>
-  {items[3].name || 'Undefined'}
-</td>
-<td className="right-align">
-  {items[3].price ? '$' + items[3].price.toFixed(2) : 'Undefined'}
-</td> */
 }

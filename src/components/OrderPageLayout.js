@@ -22,11 +22,11 @@ export default function OrderPageLayout(props) {
       </header>
 
       <div className="OrderPageLayout row">
-        <div className="col s12 m8">
+        <div className="container col s12 m8">
           <h5>Menu</h5>
           {props.children[0]}
         </div>
-        <div className="col s12 m4">
+        <div className="container col s12 m4">
           {props.children[1]}
           <div>
             {props.children[2]}

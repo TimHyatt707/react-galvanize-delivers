@@ -7,7 +7,7 @@ storiesOf('MenuItemComponent', module)
   .add('Happy Path', () =>
     <MenuItemComponent
       item={{
-        id: 1001,
+        id: 101,
         name: 'Some Item A',
         price: 9.99,
         imagePath: '//via.placeholder.com/300x200'
@@ -18,13 +18,11 @@ storiesOf('MenuItemComponent', module)
   .add('Pass on addItem', () =>
     <MenuItemComponent
       item={{
-        id: 1001,
+        id: 101,
         name: 'Some Item A',
         price: 9.99,
         imagePath: '//via.placeholder.com/300x200'
       }}
-      onAddItem={itemId => {
-        console.log('jew');
-      }}
+      onAddItem={itemId => {}}
     />
   );
