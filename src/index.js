@@ -9,6 +9,8 @@ import OrderPage from './components/OrderPage';
 
 let idCounter = 1000;
 
+let customerData = null;
+
 const menuItems = [
   {
     id: 101,
@@ -56,11 +58,48 @@ function onAddItem(itemId) {
   }
 }
 
+function onSubmit(customerInfo) {
+  customerData = customerInfo;
+  ReactDOM.render(
+    <OrderPage
+      menuItems={menuItems}
+      onAddItem={onAddItem}
+      orderItems={orderItems}
+      onSubmit={onSubmit}
+      onSubmitOrderForm={onSubmitOrderForm}
+      onCloseOrderSuccessMessage={onCloseOrderSuccessMessage}
+      customerData={customerData}
+    />,
+    document.getElementById('root')
+  );
+}
+function onCloseOrderSuccessMessage() {
+  customerData = null;
+  ReactDOM.render(
+    <OrderPage
+      menuItems={menuItems}
+      onAddItem={onAddItem}
+      orderItems={orderItems}
+      onSubmit={onSubmit}
+      onSubmitOrderForm={onSubmitOrderForm}
+      onCloseOrderSuccessMessage={onCloseOrderSuccessMessage}
+      customerData={customerData}
+    />,
+    document.getElementById('root')
+  );
+}
+
+function onSubmitOrderForm(customerInfo) {}
+
 ReactDOM.render(
   <OrderPage
     menuItems={menuItems}
     onAddItem={onAddItem}
     orderItems={orderItems}
+    onSubmit={onSubmit}
+    onSubmitOrderForm={onSubmitOrderForm}
+    onCloseOrderSuccessMessage={onCloseOrderSuccessMessage}
+    customerData={customerData}
   />,
   document.getElementById('root')
 );

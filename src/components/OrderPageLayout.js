@@ -6,10 +6,7 @@ export default function OrderPageLayout(props) {
       <header>
         <div className="navbar-fixed">
           <nav className="light-blue darken-4">
-            <a
-              href="index.html"
-              className="brand-logo"
-              className="center-on-small-only">
+            <a href="index.html" className=" brand-logocenter-on-small-only">
               Galvanize Delivers
             </a>
             <ul className="right hide-on-med-and-down">

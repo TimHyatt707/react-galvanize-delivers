@@ -1,7 +1,5 @@
 import React from 'react';
 
-import MenuItemComponent from './MenuItemComponent';
-
 export default function OrderTableComponent({ items }) {
   let subtotal = 0;
   let tax = 0;

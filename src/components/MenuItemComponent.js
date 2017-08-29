@@ -6,10 +6,10 @@ export default function MenuItemComponent({ item, onAddItem }) {
     onAddItem(item.id);
   }
   return (
-    <div className="MenuItemComponent col s12 m6 container">
+    <div className="MenuItemComponent col s12 m6">
       <div className="card">
         <div className="card-image">
-          <img src={item.imagePath || 'N/a'} />
+          <img src={item.imagePath || 'N/a'} alt="N/a" />
         </div>
         <div className="card-content">
           <h5 className="card-title">
@@ -20,9 +20,7 @@ export default function MenuItemComponent({ item, onAddItem }) {
           </p>
         </div>
         <div className="card-action">
-          <a href="#" onClick={handleClick}>
-            ADD TO ORDER
-          </a>
+          <a onClick={handleClick}>ADD TO ORDER</a>
         </div>
       </div>
     </div>

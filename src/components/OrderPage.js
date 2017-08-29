@@ -3,19 +3,34 @@ import OrderPageLayout from './OrderPageLayout';
 import MenuComponent from './MenuComponent.js';
 import OrderFormComponent from './OrderFormComponent';
 import OrderTableComponent from './OrderTableComponent';
+import OrderSuccessMessageComponent from './OrderSuccessMessageComponent';
 
-export default function OrderPage({ menuItems, orderItems, onAddItem }) {
-  return (
-    <OrderPageLayout>
-      <MenuComponent items={menuItems} onAddItem={onAddItem} />
-      <OrderTableComponent items={orderItems} />
-      <OrderFormComponent
-        defaultCustomerInfo={{
-          name: 'Timothy Hyatt',
-          phone: '(707)501-7418',
-          address: '1701 Wise Drive'
-        }}
-      />
-    </OrderPageLayout>
-  );
+export default function OrderPage({
+  menuItems,
+  orderItems,
+  onAddItem,
+  onSubmit,
+  onSubmitOrderForm,
+  onCloseOrderSuccessMessage,
+  customerData
+}) {
+  if (customerData) {
+    return (
+      <OrderPageLayout>
+        <MenuComponent items={menuItems} onAddItem={onAddItem} />
+        <OrderTableComponent items={orderItems} />
+        <OrderSuccessMessageComponent
+          onCloseOrderSuccessMessage={onCloseOrderSuccessMessage}
+        />
+      </OrderPageLayout>
+    );
+  } else {
+    return (
+      <OrderPageLayout>
+        <MenuComponent items={menuItems} onAddItem={onAddItem} />
+        <OrderTableComponent items={orderItems} />
+        <OrderFormComponent onSubmit={onSubmit} />
+      </OrderPageLayout>
+    );
+  }
 }
