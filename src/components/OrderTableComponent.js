@@ -9,6 +9,7 @@ export default function OrderTableComponent({ items }) {
     tax += 0.1;
     total += items[items.length - 1].price + tax;
   }
+  console.log(items);
   return (
     <div className="OrderTableComponent">
       <h5>Order</h5>

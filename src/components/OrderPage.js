@@ -9,12 +9,11 @@ export default function OrderPage({
   menuItems,
   orderItems,
   onAddItem,
-  onSubmit,
   onSubmitOrderForm,
   onCloseOrderSuccessMessage,
-  customerData
+  customerInfo
 }) {
-  if (customerData) {
+  if (customerInfo) {
     return (
       <OrderPageLayout>
         <MenuComponent items={menuItems} onAddItem={onAddItem} />
@@ -29,7 +28,7 @@ export default function OrderPage({
       <OrderPageLayout>
         <MenuComponent items={menuItems} onAddItem={onAddItem} />
         <OrderTableComponent items={orderItems} />
-        <OrderFormComponent onSubmit={onSubmit} />
+        <OrderFormComponent onSubmit={onSubmitOrderForm} />
       </OrderPageLayout>
     );
   }
