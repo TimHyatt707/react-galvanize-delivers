@@ -20,6 +20,9 @@ const wrapper = shallow(<MenuItemComponent item={item} />);
 describe('Should render MenuItemComponent, name, price, and onAddItem', () => {
   const fullWrapper = mount(<MenuItemComponent item={item} />);
   const onAddItem = jest.fn();
+  it('snapshot', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
   it('renders div component', () => {
     expect(wrapper.find('div')).toHaveLength(5);
   });

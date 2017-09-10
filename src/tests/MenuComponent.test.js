@@ -36,7 +36,7 @@ const shallowWrapper = shallow(<MenuComponent items={items} />);
 
 describe('Verify items in array are same amount as MenuItemComponents and addOn callback is fired', () => {
   const onAddItem = jest.fn();
-  it('MenuItemComponents should be same as amount of items in array', () => {
+  it('MenuItemComponents should be same length as amount of items in array', () => {
     expect(mount(<MenuComponent items={items} />).children()).toHaveLength(
       items.length
     );
