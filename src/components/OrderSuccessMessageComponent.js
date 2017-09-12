@@ -1,8 +1,8 @@
 import React from 'react';
 
 export default function OrderSuccessMessageComponent({
-  customerInfo = {},
-  onCloseOrderSuccessMessage = onCloseOrderSuccessMessage()
+  customerInfo,
+  onCloseOrderSuccessMessage
 }) {
   function handleClick(event) {
     onCloseOrderSuccessMessage();

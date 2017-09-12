@@ -9,7 +9,6 @@ export default function OrderTableComponent({ items }) {
     tax += 0.1;
     total += items[items.length - 1].price + tax;
   }
-  console.log(items);
   return (
     <div className="OrderTableComponent">
       <h5>Order</h5>
@@ -23,7 +22,7 @@ export default function OrderTableComponent({ items }) {
         <tbody>
           <tr className="tableRows" />
           {items.map(item =>
-            <tr>
+            <tr key={item.id}>
               <td className="striped">
                 {item.name}
               </td>

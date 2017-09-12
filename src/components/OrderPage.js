@@ -20,6 +20,7 @@ export default function OrderPage({
         <OrderTableComponent items={orderItems} />
         <OrderSuccessMessageComponent
           onCloseOrderSuccessMessage={onCloseOrderSuccessMessage}
+          customerInfo={customerInfo}
         />
       </OrderPageLayout>
     );

@@ -2,18 +2,22 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import OrderPage from './components/OrderPage';
 import getMenuItems from './api/getMenuItems';
-const orderItemsArray = [];
 export default class App extends Component {
-  state = {
-    menuItems: null,
-    customerInfo: null,
-    orderItems: [],
-    idCounter: 0
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      menuItems: null,
+      customerInfo: null,
+      orderItems: [],
+      idCounter: 0
+    };
+    this.props.store.subscribe(() => {
+      this.setState(this.props.store.getState());
+    });
+  }
   componentDidMount() {
     getMenuItems().then(data => {
-      console.log(data);
-      this.setState({ menuItems: data });
+      this.props.store.dispatch({ type: 'SET_ITEMS', data });
     });
   }
   render() {
@@ -29,52 +33,26 @@ export default class App extends Component {
     );
   }
   _addItem = itemId => {
+    let item;
     for (let i = 0; i < this.state.menuItems.length; i++) {
       if (this.state.menuItems[i].id === itemId) {
-        orderItemsArray.push(this.state.menuItems[i]);
-        orderItemsArray[orderItemsArray.length - 1].key = this.state.idCounter;
-        this.state.idCounter++;
+        item = this.state.menuItems[i];
       }
-      this.setState({ orderItems: orderItemsArray });
-      this.render(
-        <OrderPage
-          menuItems={this.state.menuItems}
-          orderItems={this.state.orderItems}
-          customerInfo={this.state.customerInfo}
-          onAddItem={this._addItem}
-          onSubmitOrderForm={this._submitOrderForm}
-          onCloseOrderSuccessMessage={this._closeOrderSuccessMessage}
-        />,
-        document.getElementById('root')
-      );
     }
+    this.props.store.dispatch({
+      type: 'ADD_ITEM',
+      item
+    });
   };
   _submitOrderForm = customerInfo => {
-    this.setState({ customerInfo: customerInfo });
-    this.render(
-      <OrderPage
-        menuItems={this.state.menuItems}
-        orderItems={this.state.orderItems}
-        customerInfo={this.state.customerInfo}
-        onAddItem={this._addItem}
-        onSubmitOrderForm={this._submitOrderForm}
-        onCloseOrderSuccessMessage={this._closeOrderSuccessMessage}
-      />,
-      document.getElementById('root')
-    );
+    this.props.store.dispatch({
+      type: 'SUBMIT_FORM',
+      customerInfo
+    });
   };
   _closeOrderSuccessMessage = () => {
-    this.setState({ customerInfo: null });
-    this.render(
-      <OrderPage
-        menuItems={this.state.menuItems}
-        orderItems={this.state.orderItems}
-        customerInfo={this.state.customerInfo}
-        onAddItem={this._addItem}
-        onSubmitOrderForm={this._submitOrderForm}
-        onCloseOrderSuccessMessage={this._closeOrderSuccessMessage}
-      />,
-      document.getElementById('root')
-    );
+    this.props.store.dispatch({
+      type: 'CLOSE_FORM'
+    });
   };
 }
