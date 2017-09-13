@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
+import getItemsProcess from './redux/thunks/getItemsProcess';
 import OrderPage from './components/OrderPage';
-import getMenuItems from './api/getMenuItems';
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -16,9 +16,7 @@ export default class App extends Component {
     });
   }
   componentDidMount() {
-    getMenuItems().then(data => {
-      this.props.store.dispatch({ type: 'SET_ITEMS', data });
-    });
+    this.props.store.dispatch(getItemsProcess());
   }
   render() {
     return (

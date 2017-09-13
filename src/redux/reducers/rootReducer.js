@@ -18,7 +18,8 @@ export default function rootReducer(
     case 'SUBMIT_FORM':
       return {
         ...currentState,
-        customerInfo: action.customerInfo
+        customerInfo: action.customerInfo,
+        orderItems: []
       };
     case 'CLOSE_FORM':
       return {
