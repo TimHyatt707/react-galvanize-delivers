@@ -1,0 +1,89 @@
++import { compose, lifecycle } from 'recompose';
++import { connect } from 'react-redux';
++
++import IndexPage from '../../components/IndexPage';
++
++import getNotesProcess from '../thunks/getNotesProcess';
++import updateNoteProcess from '../thunks/updateNoteProcess';
++import createNoteProcess from '../thunks/createNoteProcess';
++import deleteNoteProcess from '../thunks/deleteNoteProcess';
++
++function mapStateToProps(state, ownProps) {
++  return {
++    notes: state.notes,
++    selectedNoteId: state.selectedNoteId
++  };
++}
++
++function mapDispatchToProps(dispatch, ownProps) {
++  return {
++    onMount: () => dispatch(getNotesProcess()),
++    onSelect: noteId => dispatch({ type: 'SELECT_NOTE', noteId }),
++    onSave: ({ id, ...changes }) =>
++      id
++        ? dispatch(updateNoteProcess(id, changes))
++        : dispatch(createNoteProcess(changes)),
++    onDelete: ({ id }) => dispatch(deleteNoteProcess(id)),
++    onDeselectNote: () => dispatch({ type: 'DESELECT_NOTE' })
++  };
++}
++
++const connectToStore = connect(mapStateToProps, mapDispatchToProps);
++
++const onDidMount = lifecycle({
++  componentDidMount() {
++    this.props.onMount();
++  }
++});
++
++export default compose(connectToStore, onDidMount)(IndexPage);
+// constructor(props) {
+//   super(props);
+//   this.state = {
+//     menuItems: null,
+//     customerInfo: null,
+//     orderItems: [],
+//     idCounter: 0
+//   };
+//   this.props.store.subscribe(() => {
+//     this.setState(this.props.store.getState());
+//   });
+// }
+// componentDidMount() {
+//   this.props.store.dispatch(getItemsProcess());
+// }
+// render() {
+//   return (
+//     <OrderPage
+//       menuItems={this.state.menuItems}
+//       orderItems={this.state.orderItems}
+//       customerInfo={this.state.customerInfo}
+//       onAddItem={this._addItem}
+//       onSubmitOrderForm={this._submitOrderForm}
+//       onCloseOrderSuccessMessage={this._closeOrderSuccessMessage}
+//     />
+//   );
+// }
+// _addItem = itemId => {
+//   let item;
+//   for (let i = 0; i < this.state.menuItems.length; i++) {
+//     if (this.state.menuItems[i].id === itemId) {
+//       item = this.state.menuItems[i];
+//     }
+//   }
+//   this.props.store.dispatch({
+//     type: 'ADD_ITEM',
+//     item
+//   });
+// };
+// _submitOrderForm = customerInfo => {
+//   this.props.store.dispatch({
+//     type: 'SUBMIT_FORM',
+//     customerInfo
+//   });
+// };
+// _closeOrderSuccessMessage = () => {
+//   this.props.store.dispatch({
+//     type: 'CLOSE_FORM'
+//   });
+// };
