@@ -13,7 +13,7 @@ export default function rootReducer(
     case 'ADD_ITEM':
       return {
         ...currentState,
-        orderItems: [action.item, ...currentState.orderItems]
+        orderItems: [...currentState.orderItems, action.item]
       };
     case 'SUBMIT_FORM':
       return {

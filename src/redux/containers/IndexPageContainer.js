@@ -17,13 +17,10 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, ownProps) {
   return {
     onMount: () => dispatch(getItemsProcess()),
-    addItem: itemId =>
-      this.props.state.menuItems.find(itemId).then(item => {
-        dispatch({ type: 'ADD_ITEM', item });
-      }),
-    submitOrderForm: customerInfo =>
+    onAddItem: item => dispatch({ type: 'ADD_ITEM', item }),
+    onSubmitOrderForm: customerInfo =>
       dispatch({ type: 'SUBMIT_FORM', customerInfo }),
-    closeOrderSuccessMessage: () => dispatch({ type: 'CLOSE_FORM' })
+    onCloseOrderSuccessMessage: () => dispatch({ type: 'CLOSE_FORM' })
   };
 }
 
