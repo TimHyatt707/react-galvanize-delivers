@@ -96,7 +96,12 @@ describe('test reducer', () => {
   it('should handle CLOSE_FORM', () => {
     expect(
       rootReducer(initialStateCustomerInfo, { type: 'CLOSE_FORM' })
-    ).toEqual({ customerInfo: null });
+    ).toEqual({
+      menuItems: null,
+      customerInfo: null,
+      orderItems: [],
+      idCounter: 0
+    });
   });
   it('should handle reference error', () =>
     expect(rootReducer(initialState, { type: 'LAMBO MERCY' })).toEqual({
