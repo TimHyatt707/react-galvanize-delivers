@@ -23,6 +23,7 @@ export default function rootReducer(
       };
     case 'CLOSE_FORM':
       return {
+        ...currentState,
         customerInfo: null
       };
     default:

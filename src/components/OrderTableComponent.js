@@ -21,8 +21,8 @@ export default function OrderTableComponent({ items }) {
         </thead>
         <tbody>
           <tr className="tableRows" />
-          {items.map(item =>
-            <tr key={item.id}>
+          {items.map((item, index) =>
+            <tr key={index}>
               <td className="striped">
                 {item.name}
               </td>

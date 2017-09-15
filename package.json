@@ -22,9 +22,12 @@
   },
   "devDependencies": {
     "@storybook/react": "^3.2.5",
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "enzyme": "^2.9.1",
     "eslint-config-google": "^0.9.1",
     "jest": "^21.0.2",
+    "jest-fetch-mock": "^1.2.1",
     "react-addons-test-utils": "^15.6.0",
     "react-dom": "^15.6.1",
     "react-test-renderer": "^15.6.1"

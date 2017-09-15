@@ -3,7 +3,7 @@ import React from 'react';
 import MenuItemComponent from './MenuItemComponent';
 
 export default function MenuComponent({ items, onAddItem }) {
-  if (items === null) {
+  if (items === null || undefined) {
     return <div>Loading...</div>;
   }
   return (
